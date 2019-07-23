@@ -10,6 +10,7 @@
         :completedTodos="completedTodos"
         @add-todo="addTodo"
         @complete-todo="completeTodo"
+        @restore-todo="restoreToDo"
         ></component>
     </keep-alive>
   </div>
@@ -54,12 +55,19 @@ export default {
         name: toDoName,
         completed: false
       });
-     console.log(this.todos);
+    },
+    restoreToDo(id){
+      let currentTodo = this.getTodoId(id);
+      currentTodo.completed = false;
+
     },
     completeTodo(id){
-      let currentTodo = this.todos.find(x => x.id === id);
+      let currentTodo = this.getTodoId(id);
       currentTodo.completed = true;
-    }
+    },
+     getTodoId(id){
+      return this.todos.find(x => x.id === id);
+    },
   }
 };
 </script>
