@@ -5,7 +5,7 @@
       <li v-for="todo in completedTodos" :key="todo.id">
         <label>{{todo.name}}</label>
         <button class="restore" @click="restoreTodo(todo.id)">Restore</button>
-        <button class="delete">Delete</button>
+        <button class="delete" @click="deleteToDo(todo.id)">Delete</button>
       </li>
     </ul>
   </div>
@@ -23,6 +23,9 @@ export default {
   methods:{
     restoreTodo(id){
       this.$emit('restore-todo', id)
+    },
+    deleteToDo(id){
+      this.$emit('delete-todo',id)
     }
   }
 };

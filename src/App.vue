@@ -11,6 +11,7 @@
         @add-todo="addTodo"
         @complete-todo="completeTodo"
         @restore-todo="restoreToDo"
+        @delete-todo="deleteTodo"
         ></component>
     </keep-alive>
   </div>
@@ -64,6 +65,9 @@ export default {
     completeTodo(id){
       let currentTodo = this.getTodoId(id);
       currentTodo.completed = true;
+    },
+    deleteTodo(id){    
+    this.todos = this.todos.filter((el) => el.id !== id);
     },
      getTodoId(id){
       return this.todos.find(x => x.id === id);
