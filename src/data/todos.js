@@ -1,4 +1,4 @@
-export const tasks = [
+export const todos = [
     {
       id: 0,
       name: 'Go to Gym',

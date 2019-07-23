@@ -4,7 +4,7 @@
     <button @click="changeTab('IncompletedToDos')">ToDo</button>
     <button @click="changeTab('CompletedTodo')">Complete</button>
     <keep-alive>
-      <component :is="activeTab"></component>
+      <component :is="activeTab" :todos="todos"></component>
     </keep-alive>
   </div>
 </template>
@@ -14,12 +14,14 @@
 import AddToDo from "./components/AddToDo";
 import CompletedTodo from "./components/CompletedToDos";
 import IncompletedToDos from "./components/IncompletedToDos";
+import { todos } from "./data/todos";
 
 export default {
   name: "app",
   data() {
     return {
-      activeTab: ""
+      activeTab: "",
+      todos 
     };
   },
   components: {
@@ -103,53 +105,10 @@ input[type="text"]:focus {
 }
 
 /* Add Item  */
-label[for="new-task"] {
-  display: block;
-  margin: 0 0 20px;
-}
-input#new-task {
-  float: left;
-  width: 318px;
-}
-p > button:hover {
-  color: #0fc57c;
-}
+
 /* ToDo List */
-li {
-  overflow: hidden;
-  padding: 20px 0;
-  border-bottom: 1px solid #eee;
-}
-li > label {
-  font-size: 18px;
-  line-height: 40px;
-  width: 237px;
-  padding: 0 0 0 11px;
-}
 
-button {
-  margin: 0 0 0 10px;
-}
 /* Completed Tasks */
-#completed-tasks label {
-  text-decoration: line-through;
-  color: #888;
-}
-
-li {
-  overflow: hidden;
-  padding: 20px 0;
-  border-bottom: 1px solid #eee;
-}
-li > label {
-  font-size: 18px;
-  line-height: 40px;
-  width: 237px;
-  padding: 0 0 0 11px;
-}
-li > .delete:hover {
-  color: #cf2323;
-}
 </style>
 
 
