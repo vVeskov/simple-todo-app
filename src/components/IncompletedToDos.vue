@@ -5,7 +5,7 @@
       <li v-for="todo in incompletedTodos" :key="todo.id">
         <label>{{todo.name}}</label>
         <button class="complete" @click="completeTodo(todo.id)">Complete</button>
-        <button class="delete">Delete</button>
+        <button class="delete" @click="deleteTodo(todo.id)">Delete</button>
       </li>
     </ul>
   </div>
@@ -23,6 +23,9 @@ export default {
   methods:{
     completeTodo(id){
       this.$emit('complete-todo',id);
+    },
+    deleteTodo(id){
+      this.$emit('delete-todo',id);
     }
   }
 };
