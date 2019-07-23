@@ -2,9 +2,9 @@
   <div>
     <h3>Todo</h3>
     <ul id="incomplete-tasks">
-      <li v-for="todo in todos" :key="todo.id">
+      <li v-for="todo in incompletedTodos" :key="todo.id">
         <label>{{todo.name}}</label>
-        <button class="complete">Complete</button>
+        <button class="complete" @click="completeTodo(todo.id)">Complete</button>
         <button class="delete">Delete</button>
       </li>
     </ul>
@@ -15,9 +15,14 @@
 export default {
   name: "incompleted-todos",
   props: {
-    todos: {
+    incompletedTodos: {
       type: Array,
       required: true
+    }
+  },
+  methods:{
+    completeTodo(id){
+      this.$emit('complete-todo',id);
     }
   }
 };
