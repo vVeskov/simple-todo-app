@@ -4,7 +4,7 @@
     <button @click="changeTab('IncompletedToDos')">ToDo</button>
     <button @click="changeTab('CompletedTodo')">Complete</button>
     <keep-alive>
-      <component :is="activeTab" :todos="todos"></component>
+      <component :is="activeTab" :todos="todos" @add-todo="addTodo"></component>
     </keep-alive>
   </div>
 </template>
@@ -21,7 +21,8 @@ export default {
   data() {
     return {
       activeTab: "",
-      todos 
+      todos,
+      todoIncrementId: todos.length
     };
   },
   components: {
@@ -32,6 +33,15 @@ export default {
   methods: {
     changeTab(tabName) {
       this.activeTab = tabName;
+    },
+    addTodo(toDoName) {
+      console.log(toDoName);
+      this.todos.push({
+        id: this.todoIncrementId++,
+        name: toDoName,
+        completed: false
+      });
+     console.log(this.todos);
     }
   }
 };
